@@ -68,12 +68,13 @@ jobs:
         uses: 'dawidd6/action-send-mail@v3'
         with:
           server_address: smtp.gmail.com
-          server_port: 587
+          server_port: 465
+          secure: true
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: 'Vanakam da Mapla build successfull'
           to: vadivel.gokul@in.bosch.com
-          from: ChromaCascade Build System
+          from: ${{ secrets.MAIL_USERNAME }}
           body: |
             Vanakam da Mapla build successfull! 🎮
             
@@ -97,3 +98,5 @@ jobs:
             View the workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
             
             Happy Gaming! 🎮✨
+          ignore_cert: true
+          convert_markdown: true

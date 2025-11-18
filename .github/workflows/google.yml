@@ -65,6 +65,7 @@ jobs:
           echo "================================================"
 
       - name: 'Send Success Email'
+        if: success()
         uses: 'dawidd6/action-send-mail@v3'
         with:
           server_address: smtp.gmail.com
@@ -74,7 +75,8 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: 'Vanakam da Mapla build successfull'
           to: vadivel.gokul@in.bosch.com
-          from: ${{ secrets.MAIL_USERNAME }}
+          from: 'ChromaCascade Build <noreply@github.com>'
+          reply_to: ${{ secrets.MAIL_USERNAME }}
           body: |
             Vanakam da Mapla build successfull! 🎮
             

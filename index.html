@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChromaCascade - A Block Puzzle Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="level-display">
+                <span class="label">LEVEL</span>
+                <span id="levelValue" class="value">1</span>
+            </div>
+            <div class="title">
+                <h1>CHROMACASCADE</h1>
+            </div>
+            <div class="score-display">
+                <span class="label">SCORE</span>
+                <span id="scoreValue" class="value">0</span>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <div class="game-container">
+            <!-- Left Panel -->
+            <aside class="left-panel">
+                <div class="panel-section">
+                    <h3>HOLD</h3>
+                    <canvas id="holdCanvas" width="120" height="120"></canvas>
+                </div>
+                <div class="panel-section">
+                    <div class="stat-item">
+                        <span class="stat-label">LINES</span>
+                        <span id="linesValue" class="stat-value">0</span>
+                    </div>
+                </div>
+                <div class="panel-section">
+                    <div class="stat-item">
+                        <span class="stat-label">TIME</span>
+                        <span id="timeValue" class="stat-value">00:00</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Game Board -->
+            <main class="game-board">
+                <canvas id="gameCanvas" width="300" height="600"></canvas>
+                <div id="gameOverScreen" class="game-over hidden">
+                    <h2>GAME OVER</h2>
+                    <p class="final-score">Score: <span id="finalScore">0</span></p>
+                    <p class="final-level">Level: <span id="finalLevel">1</span></p>
+                    <button id="restartButton" class="btn-restart">PLAY AGAIN</button>
+                </div>
+                <div id="pauseScreen" class="pause-screen hidden">
+                    <h2>PAUSED</h2>
+                    <p>Press ESC or P to resume</p>
+                </div>
+            </main>
+
+            <!-- Right Panel -->
+            <aside class="right-panel">
+                <div class="panel-section">
+                    <h3>NEXT</h3>
+                    <canvas id="nextCanvas" width="120" height="120"></canvas>
+                </div>
+                <div class="panel-section">
+                    <div class="stat-item">
+                        <span class="stat-label">COMBO</span>
+                        <span id="comboValue" class="stat-value">0</span>
+                    </div>
+                </div>
+                <div class="panel-section">
+                    <div class="stat-item">
+                        <span class="stat-label">HIGH</span>
+                        <span id="highScoreValue" class="stat-value">0</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Controls Footer -->
+        <footer class="controls-footer">
+            <span>←→: Move</span>
+            <span>↑: Rotate</span>
+            <span>Space: Drop</span>
+            <span>C: Hold</span>
+            <span>ESC: Pause</span>
+        </footer>
+    </div>
+
+    <!-- Floating Score Notifications -->
+    <div id="scoreNotifications"></div>
+
+    <!-- Scripts -->
+    <script src="tetromino.js"></script>
+    <script src="renderer.js"></script>
+    <script src="game.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

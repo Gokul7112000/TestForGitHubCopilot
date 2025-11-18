@@ -63,3 +63,37 @@ jobs:
           echo "Author: ${{ github.actor }}"
           echo ""
           echo "================================================"
+
+      - name: 'Send Success Email'
+        uses: 'dawidd6/action-send-mail@v3'
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: 'Vanakam da Mapla build successfull'
+          to: vadivel.gokul@in.bosch.com
+          from: ChromaCascade Build System
+          body: |
+            Vanakam da Mapla build successfull! 🎮
+            
+            ChromaCascade build has completed successfully!
+            
+            Build Details:
+            - Repository: ${{ github.repository }}
+            - Branch: ${{ github.ref_name }}
+            - Commit: ${{ github.sha }}
+            - Author: ${{ github.actor }}
+            - Workflow: ${{ github.workflow }}
+            
+            All game files have been validated and the build is ready!
+            
+            Game Features:
+            • Tetris-style block dropping
+            • Color-matching mechanics
+            • Cascade system with combos
+            • Progressive difficulty
+            
+            View the workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            Happy Gaming! 🎮✨
